@@ -2,6 +2,7 @@ import { Route, Switch } from "wouter";
 import Layout from "./components/Layout";
 import Header from "./components/Header";
 import Notes from "./components/Notes";
+import NoteForm from "./components/NoteForm";
 
 function App() {
   return (

@@ -1,7 +1,9 @@
+import useDate from "../../hooks/use-date";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
 export default function NoteForm() {
+  const { date, dayOfTheWeek, monthAndYear } = useDate();
 
   return (
     <div>
@@ -15,7 +17,9 @@ export default function NoteForm() {
       </div>
 
       <div>
-
+        <h3>
+          {date} {dayOfTheWeek} {monthAndYear}
+        </h3>
       </div>
     </div>
   );

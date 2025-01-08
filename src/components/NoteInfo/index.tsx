@@ -7,8 +7,8 @@ type Props = {
 
 export default function NoteInfo({ title, completed }: Props) {
   return (
-    <div className="flex">
-      <h1>{title}</h1>
+    <div className="flex items-center">
+      <h1 className="mr-4">{title}</h1>
       <Checkbox checked={completed} />
     </div>
   );

@@ -3,15 +3,26 @@ import Layout from "./components/Layout";
 import Header from "./components/Header";
 import Notes from "./components/Notes";
 import NoteForm from "./components/NoteForm";
+import { useState } from "react";
 
 function App() {
+  const [note, setNote] = useState({
+    title: "",
+    description: "",
+    completed: false,
+    date: new Date(),
+  });
+
   return (
     <Layout>
-      <Header />
+      <Header note={note} />
       <Switch>
         <Route path="/" component={() => <Notes />} />
 
-        <Route path="/create" component={() => <NoteForm />} />
+        <Route
+          path="/create"
+          component={() => <NoteForm noteInfo={{ note, setNote }} />}
+        />
 
         <Route path="/:id">{(params) => <>Hello, {params.id}!</>}</Route>
 

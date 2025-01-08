@@ -10,18 +10,20 @@ export default function Notes() {
 
   return (
     <div className="flex flex-col">
-      {notes.map(({ title, completed }) => (
-        <NoteInfo title={title} completed={completed} />
-      ))}
-      <div className="absolute bottom-5 right-5">
-        <Button
-          variant="outline"
-          size="icon"
-          className="w-12 h-12"
-          onClick={() => navigate("/create")}
-        >
-          <Plus />
-        </Button>
+      <div className="mt-10">
+        {notes.map(({ title, completed }) => (
+          <NoteInfo title={title} completed={completed} />
+        ))}
+        <div className="absolute bottom-5 right-5">
+          <Button
+            variant="outline"
+            size="icon"
+            className="w-12 h-12"
+            onClick={() => navigate("/create")}
+          >
+            <Plus />
+          </Button>
+        </div>
       </div>
     </div>
   );

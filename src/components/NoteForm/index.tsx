@@ -2,7 +2,7 @@ import useDate from "../../hooks/use-date";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
-export default function NoteForm() {
+export default function NoteForm({ noteInfo }: any) {
   const { date, daysOfWeek, monthAndYear } = useDate();
 
   return (
@@ -12,8 +12,21 @@ export default function NoteForm() {
       </div>
 
       <div className="mt-6 space-y-2">
-        <Input type="text" placeholder="Note title" />
-        <Textarea placeholder="Type your message here." />
+        <Input
+          type="text"
+          placeholder="Note title"
+          value={noteInfo.note.title}
+          onChange={(e) =>
+            noteInfo.setNote({ ...noteInfo.note, title: e.target.value })
+          }
+        />
+        <Textarea
+          placeholder="Type your message here."
+          value={noteInfo.note.description}
+          onChange={(e) =>
+            noteInfo.setNote({ ...noteInfo.note, description: e.target.value })
+          }
+        />
       </div>
 
       <div className="mt-10">

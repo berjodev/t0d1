@@ -2,24 +2,40 @@ import { ArrowLeft, Calendar } from "lucide-react";
 import useDate from "../../hooks/use-date";
 import { useLocation } from "wouter";
 import { Button } from "../ui/button";
+import { useLocalStorage } from "usehooks-ts";
 
 const isOnCreateForm = (location: string) => location === "/create";
 
-export default function Header() {
+export default function Header({ note }: any) {
   const { date, daysOfWeek, monthAndYear } = useDate();
-  const [location, setLocation] = useLocation();
+  const [location, navigate] = useLocation();
+  const [notes, setNotes] = useLocalStorage("notes", []);
+
+  const saveNote = () => {
+    const newNotes = [
+      ...notes,
+      {
+        title: note.title,
+        description: note.description,
+        completed: note.completed,
+        date: `${date} ${daysOfWeek} ${monthAndYear.month} ${monthAndYear.year}`,
+      },
+    ] as any;
+
+    setNotes(newNotes);
+  };
 
   if (isOnCreateForm(location)) {
     return (
       <div
         className="w-full flex justify-between"
-        onClick={() => setLocation("/")}
+        onClick={() => navigate("/")}
       >
         <Button variant="link">
           <ArrowLeft /> Notes
         </Button>
 
-        <Button>Save</Button>
+        <Button onClick={saveNote}>Save</Button>
       </div>
     );
   }

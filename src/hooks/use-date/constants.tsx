@@ -1,4 +1,4 @@
-export const daysOfWeek: string[] = [
+export const daysOfWeekMap: string[] = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -8,7 +8,7 @@ export const daysOfWeek: string[] = [
   "Saturday",
 ];
 
-export const months: string[] = [
+export const monthsMap: string[] = [
   "January",
   "February",
   "March",

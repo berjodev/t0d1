@@ -4,11 +4,9 @@ type Props = {
   getInfo: "dayOfTheMonth" | "dayOfTheWeek" | "monthYear";
 };
 
-type Return = number | string | { month: string; year: number } | Date;
-
 const date = new Date();
 
-export default function useDate({ getInfo }: Props): Return {
+export default function useDate({ getInfo }: Props): any {
   if (getInfo === "dayOfTheMonth") return date.getDate();
 
   if (getInfo === "dayOfTheWeek") return daysOfWeek[date.getDay()];
@@ -19,5 +17,5 @@ export default function useDate({ getInfo }: Props): Return {
       year: date.getFullYear(),
     };
 
-  return date;
+  return "";
 }

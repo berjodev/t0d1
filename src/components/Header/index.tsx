@@ -7,11 +7,14 @@ const isOnCreateForm = (location: string) => location === "/create";
 
 export default function Header() {
   const { date, daysOfWeek, monthAndYear } = useDate();
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
 
   if (isOnCreateForm(location)) {
     return (
-      <div className="w-full flex justify-between">
+      <div
+        className="w-full flex justify-between"
+        onClick={() => setLocation("/")}
+      >
         <Button variant="link">
           <ArrowLeft /> Notes
         </Button>

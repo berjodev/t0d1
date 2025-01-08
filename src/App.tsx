@@ -1,21 +1,21 @@
-import { Link, Route, Switch } from "wouter";
+import { Route, Switch } from "wouter";
+import Layout from "./components/Layout";
+import Header from "./components/Header";
 
 function App() {
-
   return (
-    <div>
+    <Layout>
+      <Header />
       <Switch>
-      <Route path="/" component={() => <h1>1</h1>} />
+        <Route path="/" component={() => <h1>1</h1>} />
 
-      <Route path="/:id">
-        {(params) => <>Hello, {params.id}!</>}
-      </Route>
+        <Route path="/:id">{(params) => <>Hello, {params.id}!</>}</Route>
 
-      {/* Default route in a switch */}
-      <Route>404: No such page!</Route>
-    </Switch>
-    </div>
-  )
+        {/* Default route in a switch */}
+        <Route>404: No such page!</Route>
+      </Switch>
+    </Layout>
+  );
 }
 
-export default App
+export default App;

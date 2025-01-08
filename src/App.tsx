@@ -1,13 +1,16 @@
 import { Route, Switch } from "wouter";
 import Layout from "./components/Layout";
 import Header from "./components/Header";
+import Notes from "./components/Notes";
 
 function App() {
   return (
     <Layout>
       <Header />
       <Switch>
-        <Route path="/" component={() => <h1>1</h1>} />
+        <Route path="/" component={() => <Notes />} />
+
+        <Route path="/create" component={() => <NoteForm />} />
 
         <Route path="/:id">{(params) => <>Hello, {params.id}!</>}</Route>
 

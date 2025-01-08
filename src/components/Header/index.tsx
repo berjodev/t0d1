@@ -1,8 +1,25 @@
-import { Calendar } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 import useDate from "../../hooks/use-date";
+import { useLocation } from "wouter";
+import { Button } from "../ui/button";
+
+const isOnCreateForm = (location: string) => location === "/create";
 
 export default function Header() {
   const { date, daysOfWeek, monthAndYear } = useDate();
+  const [location] = useLocation();
+
+  if (isOnCreateForm(location)) {
+    return (
+      <div className="w-full flex justify-between">
+        <Button variant="link">
+          <ArrowLeft /> Notes
+        </Button>
+
+        <Button>Save</Button>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
